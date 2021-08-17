@@ -4,9 +4,8 @@ import Loading from "./Loading";
 import Weather from "./Weather";
 import axios from "axios";
 import * as Location from "expo-location";
-import { thistle } from "color-name";
 
-const API_KEY = "e3fc4f0b1ff9b581459527147568ed16";
+const API_KEY = "95cdc628d06bdd0d0deec1e556b2e255";
 
 export default class extends React.Component {
   state = {
@@ -25,11 +24,12 @@ export default class extends React.Component {
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
     );
     this.setState({ condition: weather[0].main, temp, temp_max, temp_min });
+    console.log({ data });
   };
 
   getLocation = async () => {
     try {
-      await Location.requestBackgroundPermissionsAsync();
+      await Location.requestForegroundPermissionsAsync();
       const {
         coords: { latitude, longitude },
       } = await Location.getCurrentPositionAsync();

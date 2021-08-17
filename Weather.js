@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import WrappedText from "react-native-wrapped-text";
-import { black } from "ansi-colors";
 
 const weatherOptions = {
   Thunderstorm: {
@@ -137,11 +136,11 @@ export default function Weather({ temp, temp_max, temp_min, condition }) {
       <View style={styles.textContainer}>
         <View style={styles.titleBox}>
           <WrappedText textStyle={styles.title}>
-            {weatherOptions["Smoke"].title}
+            {weatherOptions[condition].title}
           </WrappedText>
         </View>
         <WrappedText textStyle={styles.subTitle}>
-          {weatherOptions["Smoke"].subTitle}
+          {weatherOptions[condition].subTitle}
         </WrappedText>
       </View>
     </LinearGradient>
@@ -163,9 +162,6 @@ Weather.propTypes = {
     "Dust",
     "Fog",
     "Sand",
-    "Ash",
-    "Squall",
-    "Tornado",
   ]).isRequired,
 };
 
